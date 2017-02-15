@@ -1,0 +1,26 @@
+<h1>Welcome to question world</h1>
+
+<h2>Your question form</h2>
+<form method="post" action="/users/<%= session[:id] %>/questions">
+	<input type=text placeholder="topic" name="user[title]"><br>
+    <input type=text placeholder="question" name="user[body]"><br>
+    <input type=submit value="Send your question">
+</form>
+
+<ul>
+	<% if @questions %>
+		<% @questions.each do |q| %>
+			<li><%= q.title %></li>
+			<li><%= q.body %><a href="/questions/<%= q.id %>/answers/new">
+    							<button>Answer</button>
+							</a></li>
+		<% end %>
+	<% end %>
+</ul>
+
+
+<form action="/sessions/:id" method="post">
+	<input name="_method" type="hidden" value="delete" />
+    <button type='submit'>logout</button>
+</form>
+

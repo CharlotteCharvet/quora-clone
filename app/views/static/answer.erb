@@ -1,0 +1,19 @@
+<h1><%= @question.id %>
+
+</h1>
+<h2>Your answer form</h2>
+<form method="post" action="/questions/<%= @question.id %>/answers">
+    <input type=text placeholder="answer" name="body"><br>
+    <input type=submit value="Send your answer">
+</form>
+
+
+<ul>
+	<% if @answers %>
+		<% @answers.each do |a| %>
+			<li><%= a.body %><a href="/questions/<%= a.id %>/answers/new">
+    							<button>return</button>
+							</a></li>
+		<% end %>
+	<% end %>
+</ul>

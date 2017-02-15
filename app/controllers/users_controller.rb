@@ -2,6 +2,7 @@ enable :sessions
 
 #new
 get '/users/new' do
+	
 	erb :"static/index"
 end
 
@@ -10,7 +11,8 @@ post '/users' do
 	user = User.new(params[:user])
   	if user.save
   		session[:id] = user.id
-  		erb :"static/dashboard"
+  		#erb :"static/dashboard"
+  		redirect "/users/#{current_user.id}/questions/new"
     	
     	# if save the new user will directly be on his session
   	else

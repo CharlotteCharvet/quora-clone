@@ -1,6 +1,15 @@
 session
-<%= @id %>
 
-<!-- <button action="/session/<% current_user.id %>" value="log out" />
-log out
-</button> -->
+
+<form action="/sessions/:id" method="post">
+	<input name="_method" type="hidden" value="delete" />
+    <button type='submit'>logout</button>
+</form>
+
+<p>
+	<% if @questions %>
+		<% @questions.each do |q| %>
+			<%= p q %>
+		<% end %>
+	<% end %>
+</p>

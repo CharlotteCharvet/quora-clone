@@ -1,3 +1,4 @@
+require 'byebug'
 enable :sessions
 
 #login page acces only 
@@ -12,7 +13,8 @@ post '/sessions' do
 	if current_user && current_user.authenticate(params[:password])
 		session[:id] = current_user.id
 		
-		erb :"static/dashboard"
+		redirect "/users/#{current_user.id}/questions/new"
+		#erb :"static/dashboard"
 
 	else
 		erb :"static/login"
@@ -22,5 +24,7 @@ end
 
 
 delete '/sessions/:id' do
-
+	
+	session.clear
+	redirect '/sessions/new'
 end

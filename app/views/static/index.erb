@@ -6,6 +6,14 @@
     <input type=submit value="Sign up">
 </form>
 
-<a href="login.erb">
-    <button>Click me</button>
+<a href="/sessions/new">
+    <button>Already a member ? click me !</button>
 </a>
+
+<ul>
+	<% if @questions %>
+		<% @questions.each do |q| %>
+			<li><%= q.body %></li>
+		<% end %>
+	<% end %>
+</ul>
